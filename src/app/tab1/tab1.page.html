@@ -1,17 +1,32 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title>Search</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-list>
+    <ion-card *ngFor="let item of items" >
+      <ion-card-header>
+        <ion-card-title>{{ item.allerAdresseDepart }} ,{{ item.allerAdresseDestination }} </ion-card-title>
+      </ion-card-header>
+      <ion-card-content (click)="selectOne(item.id)">
+        <img src="../../assets/{{item.typeVehicule}}.png" alt="Image" />
+        <div class="time-section">
+          <ion-icon name="alarm-outline"></ion-icon>
+          <span style="margin-left: 10px;">{{ item.allerHeure }}</span>
+        </div>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+        <!-- Phone number and icon -->
+        <div class="phone-section">
+          <ion-icon name="call-outline"></ion-icon>
+          <span style="margin-left: 10px;">{{ item.phone }}</span>
+        </div>
+        <div>
+          <ion-chip *ngFor="let i of item.jours">{{i}}</ion-chip>
+
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
 </ion-content>

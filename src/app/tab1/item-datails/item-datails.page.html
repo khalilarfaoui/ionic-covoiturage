@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ item?.address }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="item">
+    <ion-card-header>
+      <ion-card-title>{{ item.address }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <img [src]="item.image" alt="Image" />
+      <div class="time-section">
+        <ion-icon name="alarm-outline"></ion-icon>
+        <span style="margin-left: 10px;">{{ item.time }}</span>
+      </div>
+      <div class="phone-section">
+        <ion-icon name="call-outline"></ion-icon>
+        <span style="margin-left: 10px;">{{ item.phone }}</span>
+      </div>
+      <!-- Additional details can be added here -->
+    </ion-card-content>
+  </ion-card>
+  <div id="map"></div>
+</ion-content>

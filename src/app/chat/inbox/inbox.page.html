@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="goBack()" slot="end" class="ion-no-margin">
+          <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>inbox</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="user-list-content">
+  <ion-list>
+    <ion-item *ngFor="let recentUser of recentUsers" (click)="openChat(recentUser.idAdv)">
+      <ion-avatar slot="start">
+        <ion-icon name="person-circle-outline" size="large"></ion-icon>
+      </ion-avatar>
+      <ion-label>
+        <h2 class="user-name">{{recentUser.usernameAdv}}</h2>
+        <p class="user-email"><span style="font-size: small;">{{recentUser.lastSender}} :</span>  {{recentUser.lastMessage}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

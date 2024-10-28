@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Inscription</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-icon name="person-outline" slot="start" style="color: #08a391;"></ion-icon>
+    <ion-label position="floating" >Prénom</ion-label>
+    <ion-input type="text" [(ngModel)]="firstName"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-icon name="person-outline" slot="start" style="color: #08a391;"></ion-icon>
+    <ion-label position="floating">Nom</ion-label>
+    <ion-input type="text" [(ngModel)]="lastName"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-icon name="call-outline" slot="start" style="color: #08a391;"></ion-icon>
+    <ion-label position="floating">Numéro de téléphone</ion-label>
+    <ion-input type="tel" [(ngModel)]="phoneNumber"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-icon name="mail-outline" slot="start" style="color: #08a391;"></ion-icon>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input type="email" [(ngModel)]="email"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-icon name="lock-closed-outline" slot="start" style="color: #08a391;"></ion-icon>
+    <ion-label position="floating">Mot de passe</ion-label>
+    <ion-input type="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+
+
+  <ion-button expand="block" (click)="register()"  style="--background: #08a391; color: #ffffff;">
+    Inscription
+  </ion-button>
+
+</ion-content>

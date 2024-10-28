@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="goBack()" slot="end" class="ion-no-margin">
+          <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Chat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="chat-container"  #chatContainer >
+    <div *ngFor="let msg of messages" class="message" [ngClass]="{'sent': msg.senderId === userId, 'received': msg.senderId !== userId}">
+      <div class="message-info">
+        <strong>{{ msg.sender?.firstName }} {{ msg.sender?.lastName }}</strong>
+        <small class="timestamp">{{ msg.timestamp.toDate() | date:'short' }}</small>
+      </div>
+      <div class="message-content">
+        {{ msg.message }}
+      </div>
+    </div>
+    <div style="display: flex;">
+
+      <ion-input [(ngModel)]="currentMessage" placeholder="Type your message..." class="message-input"></ion-input>
+      <ion-button (click)="sendMessage()" class="send-button">Send</ion-button>
+    </div>
+  </div>
+
+
+
+</ion-content>

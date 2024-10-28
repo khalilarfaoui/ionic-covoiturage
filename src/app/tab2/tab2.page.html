@@ -1,17 +1,141 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-title>Add +</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <form [formGroup]="covoiturageForm" (ngSubmit)="onSubmit()">
+    <!-- Aller (Departure) -->
+    <ion-card>
+      <ion-card-header>Aller</ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-input
+            formControlName="allerAdresseDepart"
+            placeholder="Adresse départ"
+            labelPlacement="stacked"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            formControlName="allerAdresseDestination"
+            placeholder="Adresse destination"
+            labelPlacement="stacked"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-select formControlName="allerHeure" placeholder="Sélectionnez l'heure">
+            <ion-select-option *ngFor="let hour of hours" [value]="hour">{{ hour }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <!-- Retour (Return) -->
+    <ion-card>
+      <ion-card-header>Retour</ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-input
+            formControlName="retourAdresseDepart"
+            placeholder="Adresse départ"
+            labelPlacement="stacked"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            formControlName="retourAdresseDestination"
+            placeholder="Adresse destination"
+            labelPlacement="stacked"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-select formControlName="retourHeure" placeholder="Sélectionnez l'heure">
+            <ion-select-option *ngFor="let hour of hours" [value]="hour">{{ hour }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Jours (Days) -->
+    <ion-card>
+      <ion-card-header>Les jours</ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-select formControlName="jours" multiple="true" placeholder="Sélectionnez les jours">
+            <ion-select-option *ngFor="let jour of jours" [value]="jour">{{ jour }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Nombre de places -->
+    <ion-card>
+      <ion-card-header>Nombre de places</ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-input
+            formControlName="places"
+            type="number"
+            placeholder="Sélectionnez le nombre de places"
+            required
+          ></ion-input>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Prix -->
+    <ion-card>
+      <ion-card-header>Prix</ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-input
+            formControlName="prix"
+            type="number"
+            placeholder="Entrez le prix"
+            required
+          ></ion-input>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>Téléphone</ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-input
+            formControlName="phone"
+            type="number"
+            placeholder="Entrez le numéro du téléphone"
+            required
+          ></ion-input>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Type de véhicule -->
+    <ion-card >
+      <ion-card-header>Type de véhicule</ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-select formControlName="typeVehicule" placeholder="Sélectionnez le type de véhicule">
+            <ion-select-option value="car">Voiture</ion-select-option>
+            <ion-select-option value="moto">Moto</ion-select-option>
+            <ion-select-option value="bus">Bus</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Submit Button -->
+    <ion-card style="background-color: #1e1e1e;">
+      <ion-button expand="block" type="submit" [disabled]="!covoiturageForm.valid">Créer un covoiturage</ion-button>
+    </ion-card>
+  </form>
 </ion-content>
+

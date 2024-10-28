@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AuthService } from './../services/auth.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,6 +9,15 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  constructor(private authService : AuthService , private router : Router) {}
 
+
+  logout(){
+    this.authService.logout().then(()=>{
+      this.router.navigateByUrl('auth')
+    })
+  }
+  goToMessage(){
+    this.router.navigateByUrl('tabs/chat')
+  }
 }

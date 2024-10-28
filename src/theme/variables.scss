@@ -1,2 +1,54 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+/* src/theme/variables.css */
+
+:root {
+  --ion-background-color: #1e1e1e; /* Fond sombre */
+  --ion-text-color: #ffffff;       /* Texte blanc */
+  --ion-color-primary: #4a90e2;    /* Couleur primaire pour boutons, etc. */
+  --ion-color-secondary: #2a2a2a;  /* Couleur secondaire */
+
+  /* Couleurs pour les composants */
+  --ion-color-step-50: #2a2a2a;
+  --ion-color-step-100: #3a3a3a;
+  --ion-color-step-200: #4a4a4a;
+  --ion-color-step-300: #5a5a5a;
+  --ion-color-step-400: #6a6a6a;
+  --ion-color-step-500: #7a7a7a;
+  --ion-color-step-600: #8a8a8a;
+  --ion-color-step-700: #9a9a9a;
+  --ion-color-step-800: #aaaaaa;
+  --ion-color-step-900: #cacaca;
+
+  /* Input et Select */
+  --ion-item-background: #333333;
+  --ion-item-color: #ffffff;
+
+  /* Navbar */
+  --ion-toolbar-background: #1e1e1e;
+  --ion-toolbar-color: #ffffff;
+
+  /* Boutons */
+  --ion-button-background: #4a90e2;
+  --ion-button-text-color: #ffffff;
+
+  /* Autres éléments */
+  --ion-tab-bar-background: #1e1e1e;
+  --ion-tab-bar-color: #ffffff;
+
+  --ion-color-primary: #08a391;
+
+  /* Couleur des items (ion-item) */
+  --ion-item-background: #333333;
+  --ion-item-color: #ffffff;
+
+  /* Couleur des labels et des icônes */
+  --ion-label-color: #ffffff;
+  --ion-icon-color: #08a391;
+
+  /* Toolbar (ion-toolbar) */
+  --ion-toolbar-background: #1e1e1e;
+  --ion-toolbar-color: #ffffff;
+
+  /* Boutons (ion-button) */
+  --ion-button-background: #08a391;
+  --ion-button-color: #ffffff;
+}

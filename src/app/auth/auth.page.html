@@ -1,0 +1,17 @@
+<ion-content>
+  <router-outlet></router-outlet>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="selectedSegment">
+      <ion-segment-button value="login" (click)="goToLogin()">
+        Connexion
+      </ion-segment-button>
+
+      <ion-segment-button value="register" (click)="goToRegister()">
+        Inscription
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer>

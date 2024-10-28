@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Connexion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-icon name="mail-outline" slot="start"  style="color: #08a391;"></ion-icon>
+    <ion-label position="floating" >Email</ion-label>
+    <ion-input type="email" [(ngModel)]="email"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-icon name="lock-closed-outline" slot="start" style="color: #08a391;" ></ion-icon>
+    <ion-label position="floating" >Mot de passe</ion-label>
+    <ion-input type="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+  <ion-button expand="block" (click)="login()" style="--background: #08a391; color: #ffffff;">Connexion</ion-button>
+ <button #myElement id="open-toast" hidden>button</button>
+
+  <ion-toast trigger="open-toast" message="{{err}}" [duration]="5000"></ion-toast>
+</ion-content>

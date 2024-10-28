@@ -1,17 +1,19 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-header>
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title>Paramétre</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="goToMessage()">
+          <ion-icon name="chatbubbles-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
+</ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+<ion-content>
+
+
+    <ion-button color="danger" style="color: white;" (click)="logout()" type="submit">Déconnection</ion-button>
+
 </ion-content>
