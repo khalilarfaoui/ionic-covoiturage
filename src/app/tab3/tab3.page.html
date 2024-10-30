@@ -13,7 +13,15 @@
 
 <ion-content>
 
+  <ion-list>
+    <ion-item>
+      <ion-label style="cursor: pointer;"><a (click)="goToMyList()">Mes covoiturages</a></ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label style="cursor: pointer;">Mon Profil</ion-label>
+    </ion-item>
 
+  </ion-list>
     <ion-button color="danger" style="color: white;" (click)="logout()" type="submit">Déconnection</ion-button>
 
 </ion-content>

@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import { Router, NavigationExtras } from "@angular/router";
+import { Router, NavigationExtras, ActivatedRoute } from "@angular/router";
 
 import { Map, tileLayer, marker, icon } from "leaflet";
 import {NativeGeocoder,NativeGeocoderOptions} from "@ionic-native/native-geocoder/ngx";
@@ -15,10 +15,17 @@ export class PickupLocationPage implements OnInit {
   map!: Map;
   newMarker: any;
   address!: string;
+  position : any
 
-  constructor(private geocoder: NativeGeocoder, private router: Router , private http : HttpClient) {}
+  constructor(private geocoder: NativeGeocoder, private router: Router , private http : HttpClient , private route : ActivatedRoute) {
+    this.route.queryParams.subscribe((params) => {
+      this.position = params['position'];
+
+    });
+  }
   ngOnInit(): void {
     console.log('')
+
   }
 
   ionViewDidEnter() {
@@ -92,16 +99,22 @@ export class PickupLocationPage implements OnInit {
   }
 
   confirmPickupLocation() {
-    let navigationextras: NavigationExtras = {
-      state: {
-        pickupLocation: this.address
-      }
-    };
-    this.router.navigate(["home"], navigationextras);
+    if(this.position == 'retour'){
+      this.router.navigate(['tabs/tab2/'], {
+        queryParams: { retour: this.address }
+      });
+    }
+    if(this.position == 'destination'){
+      this.router.navigate(['tabs/tab2/'], {
+        queryParams: { des: this.address }
+      });
+
+    }
   }
 
   goBack() {
-    this.router.navigate(["home"]);
+    this.router.navigate(["tabs/tab2"]);
   }
+
 
 }

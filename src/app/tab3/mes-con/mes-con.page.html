@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button fill="clear" slot="start" (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+    <ion-title>Mes covoiturage</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToMessage()">
+        <ion-icon name="chatbubbles-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      <ion-card >
+        <ion-card-header>
+          <ion-card-title>
+            <ion-chip>
+              <ion-icon name="pin" color="primary"></ion-icon>
+              <ion-label>{{ item.allerAdresseDepart }}</ion-label>
+              <ion-icon name="close"></ion-icon>
+            </ion-chip>
+            <ion-chip>
+              <ion-icon name="pin" color="primary"></ion-icon>
+              <ion-label>{{ item.allerAdresseDestination }}</ion-label>
+              <ion-icon name="close"></ion-icon>
+            </ion-chip>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content >
+          <!-- <img src="../../assets/{{item.typeVehicule}}.png" alt="Image" /> -->
+          <div class="time-section">
+            <ion-icon name="alarm-outline"></ion-icon>
+            <span style="margin-left: 10px">{{ item.allerHeure }}</span>
+          </div>
+
+          <!-- Phone number and icon -->
+          <div class="phone-section">
+            <ion-icon name="call-outline"></ion-icon>
+            <span style="margin-left: 10px">{{ item.phone }}</span>
+          </div>
+          <div>
+            <ion-chip *ngFor="let i of item.jours">{{i}}</ion-chip>
+          </div>
+          <ion-card style="background-color: #1e1e1e;">
+            <ion-button expand="block" type="submit" color="danger" (click)="delete(item)">Delete</ion-button>
+          </ion-card>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

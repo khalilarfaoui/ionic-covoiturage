@@ -5,7 +5,7 @@
           <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Chat</ion-title>
+    <ion-title>{{ userObj.firstName }} {{ userObj.lastName }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -23,7 +23,7 @@
     <div style="display: flex;">
 
       <ion-input [(ngModel)]="currentMessage" placeholder="Type your message..." class="message-input"></ion-input>
-      <ion-button (click)="sendMessage()" class="send-button">Send</ion-button>
+      <ion-button (click)="sendMessage()" >Send</ion-button>
     </div>
   </div>
 

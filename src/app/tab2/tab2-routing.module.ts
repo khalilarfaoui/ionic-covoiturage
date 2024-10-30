@@ -6,6 +6,14 @@ const routes: Routes = [
   {
     path: '',
     component: Tab2Page,
+  },
+  {
+    path: 'map',
+    loadChildren: () => import('../tab1/map/map.module').then( m => m.MapPageModule)
+  },
+  {
+    path: 'pickup-location',
+    loadChildren: () => import('../tab1/pickup-location/pickup-location.module').then( m => m.PickupLocationPageModule)
   }
 ];
 

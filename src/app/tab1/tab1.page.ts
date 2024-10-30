@@ -30,4 +30,7 @@ export class Tab1Page implements OnInit {
     const url = 'tabs/tab1/item-datails/'+id
     this.router.navigateByUrl(url)
   }
+  goToMessage(){
+    this.router.navigateByUrl('tabs/chat')
+  }
 }

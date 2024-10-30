@@ -4,6 +4,7 @@ import { CovoiturageService } from '../services/covoiturage.service';
 import { AlertController } from '@ionic/angular';
 import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -23,19 +24,24 @@ export class Tab2Page implements OnInit {
   ];
   hours: String[] = [];
   minutes: number[] = [];
-  currentUser:any
+  currentUser: any;
+  pickupLocation: any;
+  des = '';
+  retour = '';
   constructor(
     private fb: FormBuilder,
     private covoiturageService: CovoiturageService,
     private alertController: AlertController,
-    private userService : AuthService
+    private userService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {
-    this.userService.getUser().subscribe(res=>{
-      this.currentUser = res
-    })
+    this.userService.getUser().subscribe((res) => {
+      this.currentUser = res;
+    });
 
     this.covoiturageForm = this.fb.group({
-      allerAdresseDepart: ['', Validators.required],
+      allerAdresseDepart: [this.des, Validators.required],
       allerAdresseDestination: ['', Validators.required],
       allerHeure: ['', Validators.required],
       retourAdresseDepart: ['', Validators.required],
@@ -46,19 +52,57 @@ export class Tab2Page implements OnInit {
       prix: ['', [Validators.required, Validators.min(0)]],
       typeVehicule: ['', Validators.required],
       phone: ['', Validators.required],
-      userId : ['']
+      userId: [''],
+    });
 
+    this.route.queryParams.subscribe((params) => {
+      this.retour = params['retour'];
+      console.log('aaa', this.retour);
+      if (this.retour) {
+        this.covoiturageForm.patchValue({
+          allerAdresseDestination: this.retour,
+          retourAdresseDestination: this.retour,
+        });
+      }
+
+
+    });
+    this.route.queryParams.subscribe((params) => {
+      this.des = params['des'];
+      console.log('aaa', this.des);
+      if (this.des) {
+        this.covoiturageForm.patchValue({
+          allerAdresseDepart: this.des,
+          retourAdresseDepart: this.des,
+        });
+      }
+
+
+    });
+  }
+
+  goToMapsDestination() {
+    this.router.navigate(['tabs/tab2/pickup-location'], {
+      queryParams: { position: 'destination' },
+    });
+  }
+
+  goToMapsRetour() {
+    this.router.navigate(['tabs/tab2/pickup-location'], {
+      queryParams: { position: 'retour' },
     });
   }
 
   async onSubmit() {
     if (this.covoiturageForm.valid) {
       try {
-        this.covoiturageForm.value.userId = this.currentUser.uid
+        this.covoiturageForm.value.userId = this.currentUser.uid;
         await this.covoiturageService.createCovoiturage(
           this.covoiturageForm.value
         );
         await this.showAlert('Succès', 'Covoiturage créé avec succès');
+
+        this.router.navigateByUrl('tabs/tab1')
       } catch (error) {
         console.error('Error creating covoiturage:', error);
       }
@@ -87,5 +131,9 @@ export class Tab2Page implements OnInit {
         this.hours.push(time);
       }
     }
+  }
+
+  goToMessage(){
+    this.router.navigateByUrl('tabs/chat')
   }
 }

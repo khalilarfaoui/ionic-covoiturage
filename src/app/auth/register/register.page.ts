@@ -28,7 +28,7 @@ export class RegisterPage implements OnInit {
         email: this.email,
         password: this.password,
       });
-      // this.router.navigateByUrl('/home');
+       this.router.navigateByUrl('auth/login');
     } catch (error) {
       console.error("Erreur d'inscription :", error);
     }

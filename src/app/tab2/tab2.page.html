@@ -1,6 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Add +</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToMessage()">
+        <ion-icon name="chatbubbles-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -17,6 +22,7 @@
             labelPlacement="stacked"
             required
           ></ion-input>
+          <a (click)="goToMapsDestination()">maps</a>
         </ion-item>
         <ion-item>
           <ion-input
@@ -25,6 +31,7 @@
             labelPlacement="stacked"
             required
           ></ion-input>
+          <a (click)="goToMapsRetour()">maps</a>
         </ion-item>
         <ion-item>
           <ion-select formControlName="allerHeure" placeholder="Sélectionnez l'heure">
@@ -34,7 +41,7 @@
       </ion-card-content>
     </ion-card>
 
-    <!-- Retour (Return) -->
+
     <ion-card>
       <ion-card-header>Retour</ion-card-header>
       <ion-card-content>
@@ -45,6 +52,7 @@
             labelPlacement="stacked"
             required
           ></ion-input>
+
         </ion-item>
         <ion-item>
           <ion-input

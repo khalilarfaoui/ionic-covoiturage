@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: Tab3Page,
+  },
+  {
+    path: 'mes-con',
+    loadChildren: () => import('./mes-con/mes-con.module').then( m => m.MesConPageModule)
   }
 ];
 

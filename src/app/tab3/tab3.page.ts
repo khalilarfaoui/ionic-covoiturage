@@ -20,4 +20,10 @@ export class Tab3Page {
   goToMessage(){
     this.router.navigateByUrl('tabs/chat')
   }
+
+  goToMyList(){
+    this.router.navigateByUrl('tabs/tab3/mes-con')
+  }
+
+
 }
