@@ -10,38 +10,46 @@
 </ion-header>
 
 <ion-content>
+  <ion-searchbar
+    [(ngModel)]="searchTerm"
+    (ionInput)="search($event)"
+    placeholder="Search bu adresse"
+  >
+  </ion-searchbar>
   <ion-list>
-    <ion-card *ngFor="let item of items">
-      <ion-card-header>
-        <ion-card-title>
-          <ion-chip>
-            <ion-icon name="pin" color="primary"></ion-icon>
-            <ion-label>{{ item.allerAdresseDepart }}</ion-label>
-            <ion-icon name="close"></ion-icon>
-          </ion-chip>
-          <ion-chip>
-            <ion-icon name="pin" color="primary"></ion-icon>
-            <ion-label>{{ item.allerAdresseDestination }}</ion-label>
-            <ion-icon name="close"></ion-icon>
-          </ion-chip>
-        </ion-card-title>
-      </ion-card-header>
-      <ion-card-content (click)="selectOne(item.id)">
-        <img src="../../assets/{{item.typeVehicule}}.png" alt="Image" />
-        <div class="time-section">
-          <ion-icon name="alarm-outline"></ion-icon>
-          <span style="margin-left: 10px">{{ item.allerHeure }}</span>
-        </div>
+    <ion-item *ngFor="let item of items">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            <ion-chip>
+              <ion-icon name="pin" color="primary"></ion-icon>
+              <ion-label>{{ item.allerAdresseDepart }}</ion-label>
+              <ion-icon name="close"></ion-icon>
+            </ion-chip>
+            <ion-chip>
+              <ion-icon name="pin" color="primary"></ion-icon>
+              <ion-label>{{ item.allerAdresseDestination }}</ion-label>
+              <ion-icon name="close"></ion-icon>
+            </ion-chip>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content (click)="selectOne(item.id)">
+          <img src="../../assets/{{item.typeVehicule}}.png" alt="Image" />
+          <div class="time-section">
+            <ion-icon name="alarm-outline"></ion-icon>
+            <span style="margin-left: 10px">{{ item.allerHeure }}</span>
+          </div>
 
-        <!-- Phone number and icon -->
-        <div class="phone-section">
-          <ion-icon name="call-outline"></ion-icon>
-          <span style="margin-left: 10px">{{ item.phone }}</span>
-        </div>
-        <div>
-          <ion-chip *ngFor="let i of item.jours">{{i}}</ion-chip>
-        </div>
-      </ion-card-content>
-    </ion-card>
+          <!-- Phone number and icon -->
+          <div class="phone-section">
+            <ion-icon name="call-outline"></ion-icon>
+            <span style="margin-left: 10px">{{ item.phone }}</span>
+          </div>
+          <div>
+            <ion-chip *ngFor="let i of item.jours">{{i}}</ion-chip>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
   </ion-list>
 </ion-content>

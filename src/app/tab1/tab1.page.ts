@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page implements OnInit {
+
+  filtered: any[] = [];
+  searchTerm: string = '';
   items: any = [
   ];
 
@@ -33,4 +36,24 @@ export class Tab1Page implements OnInit {
   goToMessage(){
     this.router.navigateByUrl('tabs/chat')
   }
+  search(event: any) {
+    console.log(event.target.value)
+    const searchValue = event.target.value.toLowerCase();
+    this.covoiturageService.getCovoiturages().subscribe((res) => {
+      console.log(res);
+      this.items = res;
+      this.items = this.items.filter((i:any)=>{
+        return i.allerAdresseDepart.toLowerCase().indexOf(searchValue) !== -1
+      })
+    });
+
+    // this.filteredMessages = this.messages.filter((message) => {
+    //   const senderName = `${message.sender.firstName} ${message.sender.lastName}`.toLowerCase();
+    //   return (
+    //     senderName.includes(searchValue) ||
+    //     message.message.toLowerCase().includes(searchValue)
+    //   );
+    // });
+  }
+
 }

@@ -77,14 +77,25 @@ export class BoxPage implements OnInit, AfterViewChecked {
       .getChatMessages(this.userId, receiverId)
       .subscribe((messages) => {
         this.messages = messages;
-        console.log(this.messages);
+
+        // Trier les messages par date (timestamp)
+        this.messages.sort((a: any, b: any) => {
+          const dateA = a.timestamp.seconds * 1000 + a.timestamp.nanoseconds / 1000000;
+          const dateB = b.timestamp.seconds * 1000 + b.timestamp.nanoseconds / 1000000;
+          return dateA - dateB;
+        });
+
+        // Charger les informations de l'utilisateur pour chaque message
         this.messages.map((i: any) => {
           this.userService.getUserById(i.senderId).subscribe((res) => {
             i.sender = res;
           });
         });
+
+        console.log(this.messages);
       });
   }
+
 
   sendMessage() {
     const receiverId = this.id;

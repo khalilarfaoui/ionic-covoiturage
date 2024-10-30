@@ -40,8 +40,7 @@ export class InboxPage implements OnInit {
     });
   }
   goBack() {
-    //this.navCtrl.back();
-    this.navCtrl.pop();
+    this.router.navigateByUrl('tabs/tab1')
   }
 
   openChat(userId: any) {

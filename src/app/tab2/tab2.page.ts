@@ -61,7 +61,7 @@ export class Tab2Page implements OnInit {
       if (this.retour) {
         this.covoiturageForm.patchValue({
           allerAdresseDestination: this.retour,
-          retourAdresseDestination: this.retour,
+          retourAdresseDepart: this.retour,
         });
       }
 
@@ -73,7 +73,8 @@ export class Tab2Page implements OnInit {
       if (this.des) {
         this.covoiturageForm.patchValue({
           allerAdresseDepart: this.des,
-          retourAdresseDepart: this.des,
+
+          retourAdresseDestination : this.des
         });
       }
 
